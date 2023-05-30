@@ -56,6 +56,7 @@ func (sb *ServerBuilder) AllowedMethods(allowedMethods ...string) *ServerBuilder
 
 func (sb *ServerBuilder) BuildEventHandler() http.Handler {
 	srv := &eventHandler{}
+	srv.allowedMethods = make(map[string]bool)
 	for _, mod := range sb.modifiers {
 		mod(srv)
 	}
@@ -87,5 +88,6 @@ func (s *eventHandler) handlePost(responseWriter http.ResponseWriter, request *h
 
 	s.logger.Info().Msgf("request body: %v", string(requestBytes))
 
+	responseWriter.WriteHeader(http.StatusCreated)
 	return nil
 }

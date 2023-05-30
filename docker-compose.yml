@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: database
+      POSTGRES_DB: webhook
     ports:
       - "5432:5432"
   webhook:
@@ -20,8 +20,8 @@ services:
     depends_on:
       - db
     environment:
-      DB_HOST: db
-      DB_USER: myuser
-      DB_PASSWORD: mypassword
-      DB_NAME: mydb
-
+      POSTGRES_HOST: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_NAME: webhook
+      POSTGRES_PORT: 5432

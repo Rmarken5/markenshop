@@ -6,6 +6,8 @@ import (
 	"github.com/rs/zerolog"
 )
 
+//go:generate mockgen -destination=./mock_repository.go -package=repository . Repository
+
 type (
 	Repository interface {
 		InsertEvent(event models.Event) error

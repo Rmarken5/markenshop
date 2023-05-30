@@ -8,8 +8,9 @@ import (
 )
 
 func main() {
-
 	logger := zerolog.New(os.Stdout)
+	_ = loadConfigurations()
+
 	httpClient := &http.Client{}
 	sb := webhook.ServerBuilder{}
 	sb.WithClient(httpClient).WithLogger(&logger)

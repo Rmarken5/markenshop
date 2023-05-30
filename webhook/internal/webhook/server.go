@@ -85,7 +85,7 @@ func (s *eventHandler) handlePost(responseWriter http.ResponseWriter, request *h
 	if err != nil {
 		log.Err(err).Msg("when trying to read request body")
 	}
-
+	s.logger.Info().Msgf("request headers: %v", request.Header)
 	s.logger.Info().Msgf("request body: %v", string(requestBytes))
 
 	responseWriter.WriteHeader(http.StatusCreated)

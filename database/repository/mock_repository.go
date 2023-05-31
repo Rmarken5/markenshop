@@ -8,7 +8,7 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
-	models "github.com/rmarken5/markenshop/database/models"
+	push "github.com/rmarken5/markenshop/database/models/push"
 )
 
 // MockRepository is a mock of Repository interface.
@@ -34,16 +34,122 @@ func (m *MockRepository) EXPECT() *MockRepositoryMockRecorder {
 	return m.recorder
 }
 
-// InsertEvent mocks base method.
-func (m *MockRepository) InsertEvent(arg0 models.Event) error {
+// InsertPusher mocks base method.
+func (m *MockRepository) InsertPusher(arg0 *push.Pusher) (int, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "InsertEvent", arg0)
-	ret0, _ := ret[0].(error)
-	return ret0
+	ret := m.ctrl.Call(m, "InsertPusher", arg0)
+	ret0, _ := ret[0].(int)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
 }
 
-// InsertEvent indicates an expected call of InsertEvent.
-func (mr *MockRepositoryMockRecorder) InsertEvent(arg0 interface{}) *gomock.Call {
+// InsertPusher indicates an expected call of InsertPusher.
+func (mr *MockRepositoryMockRecorder) InsertPusher(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InsertEvent", reflect.TypeOf((*MockRepository)(nil).InsertEvent), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InsertPusher", reflect.TypeOf((*MockRepository)(nil).InsertPusher), arg0)
+}
+
+// InsertSender mocks base method.
+func (m *MockRepository) InsertSender(arg0 *push.Sender) (int, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "InsertSender", arg0)
+	ret0, _ := ret[0].(int)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// InsertSender indicates an expected call of InsertSender.
+func (mr *MockRepositoryMockRecorder) InsertSender(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InsertSender", reflect.TypeOf((*MockRepository)(nil).InsertSender), arg0)
+}
+
+// ReadAllPush mocks base method.
+func (m *MockRepository) ReadAllPush(arg0, arg1 int) ([]*push.Push, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadAllPush", arg0, arg1)
+	ret0, _ := ret[0].([]*push.Push)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReadAllPush indicates an expected call of ReadAllPush.
+func (mr *MockRepositoryMockRecorder) ReadAllPush(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadAllPush", reflect.TypeOf((*MockRepository)(nil).ReadAllPush), arg0, arg1)
+}
+
+// ReadAllPusher mocks base method.
+func (m *MockRepository) ReadAllPusher(arg0, arg1 int) ([]*push.Pusher, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadAllPusher", arg0, arg1)
+	ret0, _ := ret[0].([]*push.Pusher)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReadAllPusher indicates an expected call of ReadAllPusher.
+func (mr *MockRepositoryMockRecorder) ReadAllPusher(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadAllPusher", reflect.TypeOf((*MockRepository)(nil).ReadAllPusher), arg0, arg1)
+}
+
+// ReadAllSender mocks base method.
+func (m *MockRepository) ReadAllSender(arg0, arg1 int) ([]*push.Sender, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadAllSender", arg0, arg1)
+	ret0, _ := ret[0].([]*push.Sender)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReadAllSender indicates an expected call of ReadAllSender.
+func (mr *MockRepositoryMockRecorder) ReadAllSender(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadAllSender", reflect.TypeOf((*MockRepository)(nil).ReadAllSender), arg0, arg1)
+}
+
+// ReadPush mocks base method.
+func (m *MockRepository) ReadPush(arg0 string) (*push.Push, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadPush", arg0)
+	ret0, _ := ret[0].(*push.Push)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReadPush indicates an expected call of ReadPush.
+func (mr *MockRepositoryMockRecorder) ReadPush(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadPush", reflect.TypeOf((*MockRepository)(nil).ReadPush), arg0)
+}
+
+// ReadPusher mocks base method.
+func (m *MockRepository) ReadPusherByName(arg0 string) (*push.Pusher, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadPusherByName", arg0)
+	ret0, _ := ret[0].(*push.Pusher)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReadPusher indicates an expected call of ReadPusher.
+func (mr *MockRepositoryMockRecorder) ReadPusher(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadPusherByName", reflect.TypeOf((*MockRepository)(nil).ReadPusherByName), arg0)
+}
+
+// ReadSender mocks base method.
+func (m *MockRepository) ReadSenderByName(arg0 string) (*push.Sender, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadSenderByName", arg0)
+	ret0, _ := ret[0].(*push.Sender)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReadSender indicates an expected call of ReadSender.
+func (mr *MockRepositoryMockRecorder) ReadSender(arg0 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadSenderByName", reflect.TypeOf((*MockRepository)(nil).ReadSenderByName), arg0)
 }

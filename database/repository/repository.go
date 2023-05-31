@@ -3,14 +3,24 @@ package repository
 import (
 	"github.com/jmoiron/sqlx"
 	"github.com/rmarken5/markenshop/database/models"
+	"github.com/rmarken5/markenshop/database/models/push"
 	"github.com/rs/zerolog"
 )
 
 //go:generate mockgen -destination=./mock_repository.go -package=repository . Repository
 
 type (
-	Repository interface {
-		InsertEvent(event models.Event) error
+	PushReader interface {
+		ReadAll(offset, limit int) ([]*push.Push, error)
+		Read(id string) (*push.Push, error)
+	}
+	PushWriter interface {
+		Insert(push *push.Push) (string, error)
+	}
+
+	PusherReader interface {
+		ReadAll(offset, limit int) ([]*push.Pusher, error)
+		Read(id string) (*push.Pusher, error)
 	}
 
 	RepoBuilder struct {
